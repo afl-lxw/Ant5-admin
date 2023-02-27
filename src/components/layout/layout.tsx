@@ -2,7 +2,7 @@ import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-
+import './layout.less'
 const { Header, Content, Sider } = Layout;
 
 const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
@@ -30,18 +30,18 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
   },
 );
 
-const LayoutFC: React.FC = () => {
+const App: React.FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   return (
-    <Layout>
+    <Layout style={{ height: '100vh' }} >
       <Header className="header">
         <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
+        {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
       </Header>
-      <Layout>
+      <Layout >
         <Sider width={200} style={{ background: colorBgContainer }}>
           <Menu
             mode="inline"
@@ -54,8 +54,6 @@ const LayoutFC: React.FC = () => {
         <Layout style={{ padding: '0 24px 24px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb>
           <Content
             style={{
@@ -73,4 +71,4 @@ const LayoutFC: React.FC = () => {
   );
 };
 
-export default LayoutFC;
+export default App;

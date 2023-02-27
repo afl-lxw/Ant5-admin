@@ -1,0 +1,39 @@
+.login_container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .8;
+    pointer-events: none;
+    background: no-repeat center / cover;
+    background-image: url(https://gw.alipayobjects.com/zos/bmw-prod/a6c3488a-994c-4dd3-8e92-2324d9a1ca48/l9dmd9wl_w2858_h1864.png);
+  }
+  .login_center{
+    min-width:1000px;
+    min-height: 600px;
+    background-color: #FFF;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: rgb(0 0 0 / 20%) 0px 0px 0px 0px, rgb(0 0 0 / 15%) 0px 2px 14px 0px;
+    .login_img{
+      width: 500px;
+      height: auto;
+    }
+    .logo-from{
+      width: 400px;
+      height: 400px;
+      background-color: #577DF3;
+    }
+  }
+}

@@ -9,6 +9,7 @@ import zhCN from 'antd/es/locale/zh_CN'
 import {
   BrowserRouter,
 } from "react-router-dom";
+import './App.css'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,7 +20,7 @@ root.render(
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: '#00b96b',
+            colorPrimary: '#55DF',
           },
         }}
         locale={zhCN}
