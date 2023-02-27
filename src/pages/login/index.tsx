@@ -4,13 +4,11 @@ import { useRoutes } from "react-router-dom";
 import routes from "@/routers/router";
 
 const Login: FC = () => {
-  const element = useRoutes(routes);
   return (
-    <>
-      {element}
-    </>
+    <div>login</div>
   )
 }
+
 
 
 export default Login

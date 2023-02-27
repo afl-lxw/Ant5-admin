@@ -9,7 +9,6 @@ import zhCN from 'antd/es/locale/zh_CN'
 import {
   BrowserRouter,
 } from "react-router-dom";
-import Router from '@/routers'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,7 +16,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <ReduxProvider store={store} >
     <PersistGate loading={null} persistor={persistor}>
-
       <ConfigProvider
         theme={{
           token: {
