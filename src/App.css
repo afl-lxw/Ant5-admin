@@ -10,3 +10,22 @@ body, html{
   height: 100vh;
   width: 100vw;
 }
+
+*,
+*::before,
+*::after {
+  /* 设定字体 */
+  font-family: 'Montserrat', sans-serif;
+  /* 设定 box-sizing 模式 */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* 取消文字装饰器 */
+  text-decoration: none;
+  /* 取消list style */
+  list-style: none;
+  /* 禁止用户选择文字 */
+  user-select: none;
+  /* 禁止用户拖拽 */
+  -webkit-user-drag: none;
+}

@@ -8,15 +8,15 @@ const App: FC = () => {
 
   const navgate = useNavigate()
   const location = useLocation();
-  React.useEffect(()=>{
-    console.log('navgate', navgate)
-    console.log('location', location)
-    if(LoginFlag && location.pathname !== '/login'){
+  React.useEffect(() => {
+    // console.log('navgate', navgate)
+    // console.log('location', location)
+    if (LoginFlag && location.pathname !== '/login') {
       navgate('/login')
     }
-  },[])
+  }, [])
   // console.log('element----',element)
-  return(
+  return (
     <>
       {element}
     </>
