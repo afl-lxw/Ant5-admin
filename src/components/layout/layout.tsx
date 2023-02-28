@@ -2,13 +2,8 @@ import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import './layout.less'
+import './lib/layout.less'
 const { Header, Content, Sider } = Layout;
-
-const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
 
 const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
@@ -39,7 +34,7 @@ const App: React.FC = () => {
     <Layout style={{ height: '100vh' }} >
       <Header className="header">
         <div className="logo" />
-        {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
+        {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items2} /> */}
       </Header>
       <Layout >
         <Sider width={200} style={{ background: colorBgContainer }}>

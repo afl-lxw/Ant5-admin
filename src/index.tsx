@@ -10,6 +10,10 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import './App.css'
+import "tailwindcss/tailwind.css"
+import 'antd/dist/reset.css';
+import { StyleProvider } from '@ant-design/cssinjs';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,20 +21,25 @@ const root = ReactDOM.createRoot(
 root.render(
   <ReduxProvider store={store} >
     <PersistGate loading={null} persistor={persistor}>
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: '#55DF',
-          },
-        }}
-        locale={zhCN}
+      <StyleProvider 
+        hashPriority="high"
       >
-        <React.StrictMode>
-          <BrowserRouter >
-            <App />
-          </BrowserRouter>
-        </React.StrictMode>
-      </ConfigProvider>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#1677ff',
+              colorBgContainer: '#FFFFFF'
+            },
+          }}
+          locale={zhCN}
+        >
+          <React.StrictMode>
+            <BrowserRouter >
+              <App />
+            </BrowserRouter>
+          </React.StrictMode>
+        </ConfigProvider>
+      </StyleProvider>
     </PersistGate>
   </ReduxProvider>
 

@@ -1,7 +1,7 @@
-import React, {FC} from 'react'
+import React, { FC, lazy } from 'react'
 import App from '@/App'
 import Login from '@/pages/login'
-import Main from '@/pages/main'
+import Main from '@/pages'
 import NotFound from '@/pages/notFound'
 import type { RouteObject } from 'react-router-dom'
 

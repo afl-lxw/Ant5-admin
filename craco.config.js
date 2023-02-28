@@ -16,6 +16,14 @@ module.exports = {
       ["@babel/plugin-proposal-class-properties", { "loose": true }]
     ]
   },
+  style: {
+    postcssOptions: {
+      plugins: [
+        // require('tailwindcss'),
+        // require('autoprefixer'),
+      ],
+    },
+  },
   plugins: [
     {
       plugin: CracoLessPlugin,
@@ -29,4 +37,5 @@ module.exports = {
       }
     }
   ]
+  
 }
