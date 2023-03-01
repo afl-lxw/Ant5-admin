@@ -187,7 +187,7 @@ export default () => {
           </PageContainer>
 
           {/* 悬浮设置 */}
-          <SettingDrawer
+          {/* <SettingDrawer
             pathname={pathname}
             enableDarkTheme
             getContainer={() => document.getElementById('test-pro-layout')}
@@ -196,8 +196,13 @@ export default () => {
               setSetting(changeSetting);
             }}
             disableUrlParams={false}
+          /> */}
+          <Setting 
+            pathname={pathname}
+            settings={settings}
+            {...{setSetting}}
           />
-          {/* <Setting pathname={{ pathname }} /> */}
+           
         </ProLayout>
       </ProConfigProvider>
     </div>
