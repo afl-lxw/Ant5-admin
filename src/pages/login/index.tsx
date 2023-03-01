@@ -9,8 +9,11 @@ import loginBC from '@/assets/image/login.png'
 import { useLocalStorageState } from 'ahooks';
 import { useNavigate } from "react-router-dom";
 
+interface loginProps {
+  
+}
 
-const Login: FC = () => {
+const Login: FC<loginProps> = <T extends unknown>(props) => {
   const navgate = useNavigate()
   const [layout, setLayout] = React.useState([
     {
@@ -25,16 +28,11 @@ const Login: FC = () => {
     'token',
     undefined
   )
-
   const [messageApi, contextHolder] = message.useMessage();
   const success = () => {
     setToken('token-liuxiaowen')
-
-    messageApi.open({
-      type: 'success',
-      content: '登录成功',
-    });
-    // navgate('/')
+    message.success('登录成功')
+    navgate('/')
   };
 
   const onFinish = (values: any) => {
@@ -77,7 +75,7 @@ const Login: FC = () => {
               >
                 <div className='code'>
                   <Input style={{ width: '60%' }} />
-                  <img style={{ height: '32px', background: '#577DF3', width: '35%' }} src={loginImg} alt="" />
+                  <img style={{ height: '32px', background: '#577DF3', width: '35%' }} src={''} alt="占位" />
                 </div>
               </Form.Item>
               <Form.Item {...layout[1]}>
