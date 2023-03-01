@@ -13,10 +13,11 @@ import {
   ProConfigProvider,
   ProLayout,
   SettingDrawer,
+  ProForm
 } from '@ant-design/pro-components';
 import { css } from '@emotion/css';
 import { Button, Input, Dropdown, Popover, theme } from 'antd';
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import defaultProps from './_defaultProps';
 import Setting from './setting';
 
@@ -64,39 +65,25 @@ const SearchInput = () => {
   );
 };
 
-export default () => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+
+const Layout: FC<LayoutProps> = <T,>(props) => {
+  const { children } = props;
   const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
     fixSiderbar: true,
     layout: 'mix',
     splitMenus: false,
     siderMenuType: 'sub',
   });
-  const avatarProps = () =>{
-    return {
-      src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
-      size: 'small',
-      title: 'AFL',
-      render: (props, dom) => {
-        return (
-          <Dropdown
-            menu={{
-              items: [
-                {
-                  key: 'logout',
-                  icon: <LogoutOutlined />,
-                  label: '退出登录',
-                },
-              ],
-            }}
-          >
-            {dom}
-          </Dropdown>
-        );
-      },
-    }
-  }
-  const [pathname, setPathname] = useState('/list/sub-page/sub-sub-page1');
+  const [pathname, setPathname] = useState('/discover');
   const [num, setNum] = useState(40);
+  React.useEffect(() => {
+    console.log(props, 'props')
+  })
+
   return (
     <div
       id="test-pro-layout"
@@ -106,26 +93,6 @@ export default () => {
     >
       <ProConfigProvider hashed={false}>
         <ProLayout
-          bgLayoutImgList={[
-            {
-              src: 'https://img.alicdn.com/imgextra/i2/O1CN01O4etvp1DvpFLKfuWq_!!6000000000279-2-tps-609-606.png',
-              left: 85,
-              bottom: 100,
-              height: '303px',
-            },
-            {
-              src: 'https://img.alicdn.com/imgextra/i2/O1CN01O4etvp1DvpFLKfuWq_!!6000000000279-2-tps-609-606.png',
-              bottom: -68,
-              right: -45,
-              height: '303px',
-            },
-            {
-              src: 'https://img.alicdn.com/imgextra/i2/O1CN01O4etvp1DvpFLKfuWq_!!6000000000279-2-tps-609-606.png',
-              bottom: 0,
-              left: 0,
-              width: '331px',
-            },
-          ]}
           {...defaultProps}
           location={{
             pathname,
@@ -133,15 +100,34 @@ export default () => {
           menu={{
             collapsedShowGroupTitle: true,
           }}
-          avatarProps={{...avatarProps}}
+          avatarProps={{
+            src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
+            size: 'small',
+            title: 'AFL',
+            render: (props, dom) => {
+              return (
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: 'logout',
+                        icon: <LogoutOutlined />,
+                        label: '退出登录',
+                      },
+                    ],
+                  }}
+                >
+                  {dom}
+                </Dropdown>
+              );
+            },
+          }}
           actionsRender={(props) => {
             if (props.isMobile) return [];
             return [
               props.layout !== 'side' && document.body.clientWidth > 1400 ? (
                 <SearchInput />
               ) : undefined,
-              <InfoCircleFilled key="InfoCircleFilled" />,
-              <QuestionCircleFilled key="QuestionCircleFilled" />,
               <GithubFilled key="GithubFilled" />,
             ];
           }}
@@ -154,7 +140,7 @@ export default () => {
                   paddingBlockStart: 12,
                 }}
               >
-                <div>-----</div>
+                <div>AF Admin Pro</div>
                 <div>by AF</div>
               </div>
             );
@@ -176,35 +162,27 @@ export default () => {
               paddingInlinePageContainerContent: num,
             }}
             extra={[
-              
             ]}
             subTitle=""
             footer={[]}
           >
             <ProCard
-            >
+            >{children}
             </ProCard>
           </PageContainer>
 
-          {/* 悬浮设置 */}
-          {/* <SettingDrawer
-            pathname={pathname}
-            enableDarkTheme
-            getContainer={() => document.getElementById('test-pro-layout')}
-            settings={settings}
-            onSettingChange={(changeSetting) => {
-              setSetting(changeSetting);
-            }}
-            disableUrlParams={false}
-          /> */}
-          <Setting 
+
+          <Setting
             pathname={pathname}
             settings={settings}
-            {...{setSetting}}
+            {...{ setSetting }}
           />
-           
+
         </ProLayout>
       </ProConfigProvider>
     </div>
   );
 };
+
+
+export default Layout

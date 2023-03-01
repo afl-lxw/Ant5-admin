@@ -4,6 +4,7 @@ import Login from '@/pages/login'
 import Main from '@/pages'
 import NotFound from '@/pages/notFound'
 import type { RouteObject } from 'react-router-dom'
+import Discover from '@/pages/discover'
 
 const routes: RouteObject[] = [
   {
@@ -14,13 +15,13 @@ const routes: RouteObject[] = [
     path: '/',
     element: <Main />,
     children: [
-      // {
-      //   path: '/main',
-      //   element: <Main />,
-      // },
+      {
+        path: '/discover',
+        element: <Discover />,
+      },
       {
         path: "*",
-        element: <NotFound /> ,
+        element: <NotFound />,
       },
     ],
   },
