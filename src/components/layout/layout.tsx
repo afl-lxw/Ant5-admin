@@ -18,6 +18,9 @@ import { css } from '@emotion/css';
 import { Button, Input, Dropdown, Popover, theme } from 'antd';
 import React, { useState } from 'react';
 import defaultProps from './_defaultProps';
+import Setting from './setting';
+
+
 
 const SearchInput = () => {
   const { token } = theme.useToken();
@@ -65,10 +68,33 @@ export default () => {
   const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
     fixSiderbar: true,
     layout: 'mix',
-    splitMenus: true,
-    
+    splitMenus: false,
+    siderMenuType: 'sub',
   });
-
+  const avatarProps = () =>{
+    return {
+      src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
+      size: 'small',
+      title: 'AFL',
+      render: (props, dom) => {
+        return (
+          <Dropdown
+            menu={{
+              items: [
+                {
+                  key: 'logout',
+                  icon: <LogoutOutlined />,
+                  label: '退出登录',
+                },
+              ],
+            }}
+          >
+            {dom}
+          </Dropdown>
+        );
+      },
+    }
+  }
   const [pathname, setPathname] = useState('/list/sub-page/sub-sub-page1');
   const [num, setNum] = useState(40);
   return (
@@ -104,32 +130,10 @@ export default () => {
           location={{
             pathname,
           }}
-          siderMenuType="group"
           menu={{
             collapsedShowGroupTitle: true,
           }}
-          avatarProps={{
-            src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
-            size: 'small',
-            title: '七妮妮',
-            render: (props, dom) => {
-              return (
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        key: 'logout',
-                        icon: <LogoutOutlined />,
-                        label: '退出登录',
-                      },
-                    ],
-                  }}
-                >
-                  {dom}
-                </Dropdown>
-              );
-            },
-          }}
+          avatarProps={{...avatarProps}}
           actionsRender={(props) => {
             if (props.isMobile) return [];
             return [
@@ -193,6 +197,7 @@ export default () => {
             }}
             disableUrlParams={false}
           />
+          {/* <Setting pathname={{ pathname }} /> */}
         </ProLayout>
       </ProConfigProvider>
     </div>
