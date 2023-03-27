@@ -10,7 +10,7 @@ import { useLocalStorageState } from 'ahooks';
 import { useNavigate } from "react-router-dom";
 
 interface loginProps {
-  
+
 }
 
 const Login: FC<loginProps> = <T extends unknown>(props) => {

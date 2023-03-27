@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import routes from '@/routers/router'
 import { useRoutes, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useLocalStorageState } from 'ahooks';
+import Layout from '@/components/layout/layout'
 
 const App: FC = () => {
   const element = useRoutes(routes)
