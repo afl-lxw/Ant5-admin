@@ -6,8 +6,8 @@ import { SettingDrawer } from '@ant-design/pro-components'
 
 const Setting: FC<SettingDrawerProps> = <T extends unknown>(props, context) => {
   const {setSetting} = props
-  console.log('props', props)
-  console.log('context', context)
+  // console.log('props', props)
+  // console.log('context', context)
 
   return (
     <SettingDrawer

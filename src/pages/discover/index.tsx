@@ -11,20 +11,14 @@ import {
 
 const Discover: FC = () => {
   return (
-    <PageContainer
-      token={{
-        paddingInlinePageContainerContent: 40,
-      }}
-      extra={[
-      ]}
-      subTitle=""
-      footer={[]}
-    >
       <ProCard
+        style={{
+          height: '200vh',
+          minHeight: 800,
+        }}
       >
         ==================
       </ProCard>
-    </PageContainer>
   )
 }
 

@@ -12,12 +12,15 @@ export default {
         path: '/main',
         name: '首页',
         icon: <SmileFilled />,
+        component: <Discover />,
+
         routes: [
           {
+            exact: true,
             path: '/discover',
-            name: '二级列表页面',
+            name: '发现页',
             icon: <CrownFilled />,
-            component: Discover,
+            component: <Discover />,
           }
         ]
       },

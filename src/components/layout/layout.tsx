@@ -66,7 +66,7 @@ const SearchInput = () => {
 };
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 
@@ -81,8 +81,11 @@ const Layout: FC<LayoutProps> = <T,>(props) => {
   const [pathname, setPathname] = useState('/discover');
   const [num, setNum] = useState(40);
   React.useEffect(() => {
-    console.log(props, 'props')
+    
   })
+  const onPageChange = (location)=>{
+    console.log(location, 'location')
+  }
 
   return (
     <div
@@ -97,6 +100,7 @@ const Layout: FC<LayoutProps> = <T,>(props) => {
           location={{
             pathname,
           }}
+          onPageChange={onPageChange}
           menu={{
             collapsedShowGroupTitle: true,
           }}
@@ -145,32 +149,50 @@ const Layout: FC<LayoutProps> = <T,>(props) => {
               </div>
             );
           }}
-          onMenuHeaderClick={(e) => console.log(e)}
+          onMenuHeaderClick={(e) => console.log('onMenuHeaderClick',e)}
           menuItemRender={(item, dom) => (
             <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}
               onClick={() => {
-                setPathname(item.path || '/welcome');
+                console.log('item===',item)
+                setPathname(item.path || '/main');
+              }}
+            >
+              {dom}
+            </div>
+          )}
+          subMenuItemRender={(_, dom) => (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}
+              onClick={() => {
+                console.log('_===', _)
+                setPathname(_.path || '/main');
+
               }}
             >
               {dom}
             </div>
           )}
           {...settings}
+        ><PageContainer
+          token={{
+            paddingInlinePageContainerContent: 40,
+          }}
+          extra={[
+          ]}
+          subTitle=""
+          footer={[]}
         >
-          <PageContainer
-            token={{
-              paddingInlinePageContainerContent: num,
-            }}
-            extra={[
-            ]}
-            subTitle=""
-            footer={[]}
-          >
-            <ProCard
-            >{children}
-            </ProCard>
+          {children}
           </PageContainer>
-
 
           <Setting
             pathname={pathname}
